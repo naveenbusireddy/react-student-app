@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 
 import './StudentElements.css'
 
 const StudentElements = (props) => {
+
+    const [studentName, setStudentName] = useState(props.StudentName);
+    const [universityName, setUniversityName] = useState(props.University);
+    const [emailId, setEmailId] = useState(props.EmailId);
+    const [phoneNo, setPhoneNo] = useState(props.PhoneNo);
+    const [address, setAddress] = useState(props.Address);
+    // console.log("updated");
+
     const clickHandler = () => {
-        console.log("studentName");
+        setStudentName('StudentUpdated');
+        setUniversityName('university');
+        setEmailId('stude@gmail.com');
+        setPhoneNo('98563214');
+        setAddress('Bangalore-68');   
     }
     
     return (
