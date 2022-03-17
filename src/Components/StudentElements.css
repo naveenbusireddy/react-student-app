@@ -1,0 +1,10 @@
+.student-item {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* box-shadow: 0 2px 8px rgba(202, 115, 115, 0.25); */
+    padding: 0.1rem 1rem;
+    margin: 0.1rem 0;
+    border-radius: 12px;
+    background-color: #7777f7;
+  }
