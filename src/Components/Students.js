@@ -2,12 +2,13 @@ import React from "react";
 
 import StudentElements from "./StudentElements"; //importing child component to parent.
 
-const Students = (gettingObj) => { //getting the data from parent through props(gettingObj is props).
+const Students = (gettingObj) => { //getting the data from parent through props(gettingObj).
     
   return (
     <div>
+    <div>
       <StudentElements
-        StudentName={gettingObj.studentObj[0].studentName} 
+        StudentName={gettingObj.studentObj[0].studentName} //
         University={gettingObj.studentObj[0].university}
         EmailId={gettingObj.studentObj[0].emailId}
         PhoneNo={gettingObj.studentObj[0].phoneNo}
@@ -34,6 +35,7 @@ const Students = (gettingObj) => { //getting the data from parent through props(
         PhoneNo={gettingObj.studentObj[3].phoneNo}
         Address={gettingObj.studentObj[3].address}
       />
+    </div>
     </div>
   );
 };
