@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+// import React from "react";
+import React, {useState} from "react";
 
 import "./StudentForm.css";
 
@@ -29,21 +30,27 @@ const StudentForm = (props) => {
     event.preventDefault();
 
     const studentData = {
-      StudentName: enteredStudentName,
-      University: enteredUniversityName,
-      EmailId: enteredEmailId,
-      PhoneNo: enteredPhoneNo,
-      Address: enteredAddress,
+      studentName: enteredStudentName,
+      university: enteredUniversityName,
+      emailId: enteredEmailId,
+      phoneNo: enteredPhoneNo,
+      address: enteredAddress,
     };
-    // console.log(studentData);
+    console.log(studentData);
     props.onSaveStudentData(studentData);
-    setEnteredStudentName("");
+    setEnteredStudentName('');
     setEnteredUniversityName("");
     setEnteredEmailId("");
     setEnteredPhoneNo("");
     setEnteredAddress("");
   };
-
+  const cancelHandler = () => {
+    setEnteredStudentName("");
+    setEnteredUniversityName("");
+    setEnteredEmailId("");
+    setEnteredPhoneNo("");
+    setEnteredAddress("");
+  }
   return (
     <form onSubmit={submitHandler}>
       <h3>Enter New Student Details</h3>
@@ -93,10 +100,10 @@ const StudentForm = (props) => {
             onChange={addressChangeHandler}
           />
         </div>
-        <div>
-          <button type="submit">Add Student</button>
-          <button type="reset">Cancel</button>
-        </div>
+      </div>
+      <div className="new-student__control">
+        <button type="submit">Add Student</button>
+        <button type="button" onClick={cancelHandler}>Cancel</button>
       </div>
     </form>
   );

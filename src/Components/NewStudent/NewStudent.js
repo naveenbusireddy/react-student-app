@@ -8,14 +8,14 @@ const NewStudent = (props) => {
             ...enteredStudentData,
             id: Math.random().toString()
         };
-        props.onAddStudent(studentData);
+        props.addStudent(studentData);
     };
 
     return (
         <div>
             <StudentForm onSaveStudentData = {saveStudentDataHandler}/>
         </div>
-    )
-}
+    );
+};
 
 export default NewStudent;
