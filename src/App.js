@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import 'semantic-ui-css/semantic.min.css'
+
 import "./App.css";
 
 import NewStudent from "./Components/NewStudent/NewStudent"; //importing child component to parent.

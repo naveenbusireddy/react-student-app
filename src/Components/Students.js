@@ -7,7 +7,7 @@ const Students = (gettingObj) => { //getting the data from parent through props(
   return (
     <div>
     <div>
-      {gettingObj.studentObj.map((event) => (
+       {gettingObj.studentObj.map((event) => (
         <StudentElements
         key={event.id}
         StudentName={event.studentName}

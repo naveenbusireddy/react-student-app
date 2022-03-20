@@ -1,5 +1,7 @@
 // import React from "react";
 import React, {useState} from "react";
+// import { Form, Button } from 'semantic-ui-react';
+import { useForm } from "react-hook-form";
 
 import "./StudentForm.css";
 
@@ -26,16 +28,17 @@ const StudentForm = (props) => {
     setEnteredAddress(event.target.value);
   };
 
+  const { register, handleSubmit, formState:{error}} = useForm();
+
   const submitHandler = (event) => {
     event.preventDefault();
-
     const studentData = {
       studentName: enteredStudentName,
       university: enteredUniversityName,
       emailId: enteredEmailId,
       phoneNo: enteredPhoneNo,
       address: enteredAddress,
-    };
+    }; 
     console.log(studentData);
     props.onSaveStudentData(studentData);
     setEnteredStudentName('');
@@ -51,6 +54,7 @@ const StudentForm = (props) => {
     setEnteredPhoneNo("");
     setEnteredAddress("");
   }
+
   return (
     <form onSubmit={submitHandler}>
       <h3>Enter New Student Details</h3>
@@ -62,8 +66,10 @@ const StudentForm = (props) => {
             type="text"
             value={enteredStudentName}
             onChange={StudentNameChangeHandler}
+            {...register("studentName", {required: true, maxLength: 35})}
           />
         </div>
+        {error.studentName && <p>Please Check The Student Name</p>}
         <div className="new-student__control">
           <label>University Name:</label>
           <input
@@ -71,6 +77,7 @@ const StudentForm = (props) => {
             type="text"
             value={enteredUniversityName}
             onChange={universityChangeHandler}
+            {...register("universityName", {required: true, maxLength: 40})}
           />
         </div>
         <div className="new-student__control">
@@ -80,6 +87,10 @@ const StudentForm = (props) => {
             type="email"
             value={enteredEmailId}
             onChange={emailChangeHandler}
+            {...register("emailId", 
+              { required: true, 
+                pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+              })}
           />
         </div>
         <div className="new-student__control">
@@ -89,6 +100,7 @@ const StudentForm = (props) => {
             type="number"
             value={enteredPhoneNo}
             onChange={phoneNoChangeHandler}
+            {...register("phoneNo", {required: true, maxLength: 10})}
           />
         </div>
         <div className="new-student__control">
@@ -98,6 +110,7 @@ const StudentForm = (props) => {
             type="text"
             value={enteredAddress}
             onChange={addressChangeHandler}
+            {...register("address", {required: true, maxLength: 120})}
           />
         </div>
       </div>
