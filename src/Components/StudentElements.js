@@ -3,6 +3,8 @@ import React from "react";
 import "./StudentElements.css";
 
 const StudentElements = (props) => {
+
+  
   return (
     <div>
       <div className="student-item" style={{ width: "85%" }}>

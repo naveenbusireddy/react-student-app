@@ -39,10 +39,9 @@ const studentDummyData = [
   },
 ];
 const App = () => {
-  const [students, setStudents] = useState(studentDummyData);
-
+  const [studentDetails, setStudentDetails] = useState(studentDummyData);
   const addStudentHandler = (event) => {
-    setStudents((prevStudents) => {
+    setStudentDetails((prevStudents) => {
       return [event, ...prevStudents];
     });
     console.log(event);
@@ -53,7 +52,7 @@ const App = () => {
       <h2>Student App using React</h2>
       <NewStudent addStudent={addStudentHandler} />
       <br />
-      <Students studentObj={students} />
+      <Students studentObj={studentDetails} />
       {/*assigning the static data to attribute and sending the data through props to child(students) from parent.*/}
     </div>
   );

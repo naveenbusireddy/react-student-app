@@ -37,7 +37,8 @@ const StudentForm = (props) => {
       address: enteredAddress,
     };
     console.log(studentData);
-    props.onSaveStudentData(studentData);
+    props.onSaveStudentData(studentData); //sending child data to parent through function.
+    //below 5 lines are used for clearing the form fields data after clicking the submit button
     setEnteredStudentName('');
     setEnteredUniversityName("");
     setEnteredEmailId("");
@@ -45,6 +46,7 @@ const StudentForm = (props) => {
     setEnteredAddress("");
   };
   const cancelHandler = () => {
+    //below 5 lines are used for clearing the form fields data after clicking the cancel button
     setEnteredStudentName("");
     setEnteredUniversityName("");
     setEnteredEmailId("");

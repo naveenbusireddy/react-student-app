@@ -9,11 +9,13 @@ const NewStudent = (props) => {
             id: Math.random().toString()
         };
         props.addStudent(studentData);
+        console.log(studentData);
     };
 
     return (
         <div>
-            <StudentForm onSaveStudentData = {saveStudentDataHandler}/>
+            {/* getting the child data to parent through function. */}
+            <StudentForm onSaveStudentData = {saveStudentDataHandler}/> 
         </div>
     );
 };

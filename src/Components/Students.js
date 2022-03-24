@@ -1,16 +1,21 @@
+import { isEditable } from "@testing-library/user-event/dist/utils";
 import React from "react";
 import StudentElements from "./StudentElements"; //importing child component to parent.
 
-const Students = (gettingObj) => { //getting the data from parent through props(gettingObj).
+const Students = (gettingObj) => { 
+
+  const editHandler = () => {
+    console.log("edit button clicked");
+  }
 
   console.log(gettingObj);
   return (
     <div>
     <div>
-      {gettingObj.studentObj.map((event) => (
+      {gettingObj.studentObj.map((event) => ( //getting the data from parent through props(studentObj).
         <StudentElements
         key={event.id}
-        StudentName={event.studentName}
+        StudentName={event.studentName} 
         University={event.university}
         EmailId={event.emailId}
         PhoneNo={event.phoneNo}
