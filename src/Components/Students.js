@@ -1,4 +1,3 @@
-import { isEditable } from "@testing-library/user-event/dist/utils";
 import React from "react";
 import StudentElements from "./StudentElements"; //importing child component to parent.
 
