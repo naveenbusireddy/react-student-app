@@ -3,11 +3,7 @@ import React from "react";
 import StudentElements from "./StudentElements"; //importing child component to parent.
 
 const Students = (gettingObj) => { 
-
-  const editHandler = () => {
-    console.log("edit button clicked");
-  }
-
+  
   console.log(gettingObj);
   return (
     <div>
