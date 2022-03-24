@@ -1,6 +1,6 @@
 // import React from "react";
 import React, {useState} from "react";
-// import { Form, Button } from 'semantic-ui-react';
+import { Form, Button } from 'semantic-ui-react';
 import { useForm } from "react-hook-form";
 
 import "./StudentForm.css";
@@ -28,9 +28,9 @@ const StudentForm = (props) => {
     setEnteredAddress(event.target.value);
   };
 
-  const { register, handleSubmit, formState:{error}} = useForm();
+  const { register, submitHandler, formState:{errors}} = useForm();
 
-  const submitHandler = (event) => {
+  const onSubmit = (event) => {
     event.preventDefault();
     const studentData = {
       studentName: enteredStudentName,
@@ -56,10 +56,10 @@ const StudentForm = (props) => {
   }
 
   return (
-    <form onSubmit={submitHandler}>
+    <form onSubmit={submitHandler(onSubmit)}>
       <h3>Enter New Student Details</h3>
       <div className="new-student__controls" style={{ width: "80%" }}>
-        <div className="new-student__control">
+        <Form.Field className="new-student__control">
           <label>Student Name:</label>
           <input
             placeholder="Enter Student Name"
@@ -68,9 +68,9 @@ const StudentForm = (props) => {
             onChange={StudentNameChangeHandler}
             {...register("studentName", {required: true, maxLength: 35})}
           />
-        </div>
-        {error.studentName && <p>Please Check The Student Name</p>}
-        <div className="new-student__control">
+        </Form.Field>
+        {errors.studentName && <p>Please Check The Student Name</p>}
+        <Form.Field className="new-student__control">
           <label>University Name:</label>
           <input
             placeholder="Enter University Name"
@@ -79,8 +79,9 @@ const StudentForm = (props) => {
             onChange={universityChangeHandler}
             {...register("universityName", {required: true, maxLength: 40})}
           />
-        </div>
-        <div className="new-student__control">
+        </Form.Field>
+        {errors.university && <p>Please Check The University Name</p>}
+        <Form.Field className="new-student__control">
           <label>Email Id:</label>
           <input
             placeholder="Enter Email Id"
@@ -89,11 +90,12 @@ const StudentForm = (props) => {
             onChange={emailChangeHandler}
             {...register("emailId", 
               { required: true, 
-                pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
               })}
           />
-        </div>
-        <div className="new-student__control">
+        </Form.Field>
+        {errors.emailId && <p>Please Check The Email Id pattern</p>}
+        <Form.Field className="new-student__control">
           <label>Phone No:</label>
           <input
             placeholder="Enter Contact No"
@@ -102,8 +104,9 @@ const StudentForm = (props) => {
             onChange={phoneNoChangeHandler}
             {...register("phoneNo", {required: true, maxLength: 10})}
           />
-        </div>
-        <div className="new-student__control">
+        </Form.Field>
+        {errors.phoneNo && <p>Please Enter Phone Number (without code)</p>}
+        <Form.Field className="new-student__control">
           <label>Address:</label>
           <input
             placeholder="Enter Address"
@@ -112,7 +115,8 @@ const StudentForm = (props) => {
             onChange={addressChangeHandler}
             {...register("address", {required: true, maxLength: 120})}
           />
-        </div>
+        </Form.Field>
+        {errors.address && <p>Please Check The University Name</p>}
       </div>
       <div className="new-student__control">
         <button type="submit">Add Student</button>
