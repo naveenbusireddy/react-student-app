@@ -4,12 +4,12 @@ import StudentForm from "./StudentForm";
 const NewStudent = (props) => {
 
     const saveStudentDataHandler = (enteredStudentData) => {
-        const studentData = {
+        const newStudentData = {
             ...enteredStudentData,
             id: Math.random().toString()
         };
-        props.addStudent(studentData);
-        console.log(studentData);
+        props.addStudent(newStudentData);
+        console.log(newStudentData);
     };
 
     return (

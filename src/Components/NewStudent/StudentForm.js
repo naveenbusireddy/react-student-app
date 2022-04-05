@@ -1,5 +1,6 @@
 // import React from "react";
 import React, {useState} from "react";
+import {Form} from 'semantic-ui-react'
 
 import "./StudentForm.css";
 
@@ -26,18 +27,20 @@ const StudentForm = (props) => {
     setEnteredAddress(event.target.value);
   };
 
+  const studentFormData = {
+    studentName: enteredStudentName,
+    university: enteredUniversityName,
+    emailId: enteredEmailId,
+    phoneNo: enteredPhoneNo,
+    address: enteredAddress,
+  };
+
   const submitHandler = (event) => {
     event.preventDefault();
+    console.log(studentFormData);
+    
+    props.onSaveStudentData(studentFormData); //sending child data to parent through function.
 
-    const studentData = {
-      studentName: enteredStudentName,
-      university: enteredUniversityName,
-      emailId: enteredEmailId,
-      phoneNo: enteredPhoneNo,
-      address: enteredAddress,
-    };
-    console.log(studentData);
-    props.onSaveStudentData(studentData); //sending child data to parent through function.
     //below 5 lines are used for clearing the form fields data after clicking the submit button
     setEnteredStudentName('');
     setEnteredUniversityName("");
@@ -54,28 +57,30 @@ const StudentForm = (props) => {
     setEnteredAddress("");
   }
   return (
-    <form onSubmit={submitHandler}>
+    <Form onSubmit={submitHandler}>
       <h3>Enter New Student Details</h3>
       <div className="new-student__controls" style={{ width: "80%" }}>
-        <div className="new-student__control">
+        <Form.Field className="new-student__control">
           <label>Student Name:</label>
           <input
             placeholder="Enter Student Name"
             type="text"
+            required='required'
             value={enteredStudentName}
             onChange={StudentNameChangeHandler}
           />
-        </div>
-        <div className="new-student__control">
+        </Form.Field>
+        <Form.Field className="new-student__control">
           <label>University Name:</label>
           <input
             placeholder="Enter University Name"
             type="text"
+            required
             value={enteredUniversityName}
             onChange={universityChangeHandler}
           />
-        </div>
-        <div className="new-student__control">
+        </Form.Field>
+        <Form.Field className="new-student__control">
           <label>Email Id:</label>
           <input
             placeholder="Enter Email Id"
@@ -83,8 +88,8 @@ const StudentForm = (props) => {
             value={enteredEmailId}
             onChange={emailChangeHandler}
           />
-        </div>
-        <div className="new-student__control">
+        </Form.Field>
+        <Form.Field className="new-student__control">
           <label>Phone No:</label>
           <input
             placeholder="Enter Contact No"
@@ -92,8 +97,8 @@ const StudentForm = (props) => {
             value={enteredPhoneNo}
             onChange={phoneNoChangeHandler}
           />
-        </div>
-        <div className="new-student__control">
+        </Form.Field>
+        <Form.Field className="new-student__control">
           <label>Address:</label>
           <input
             placeholder="Enter Address"
@@ -101,13 +106,13 @@ const StudentForm = (props) => {
             value={enteredAddress}
             onChange={addressChangeHandler}
           />
-        </div>
+        </Form.Field>
       </div>
       <div className="new-student__control">
         <button type="submit">Add Student</button>
         <button type="button" onClick={cancelHandler}>Cancel</button>
       </div>
-    </form>
+    </Form>
   );
 };
 

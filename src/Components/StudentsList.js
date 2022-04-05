@@ -1,7 +1,7 @@
 import React from "react";
 import StudentElements from "./StudentElements"; //importing child component to parent.
 
-const Students = (gettingObj) => { 
+const StudentsList = (gettingObj) => { 
   
   console.log(gettingObj);
   return (
@@ -17,9 +17,10 @@ const Students = (gettingObj) => {
         Address={event.address}
         />
       ))}
+      <button >Edit</button>
     </div>
     </div>
   );
 };
 
-export default Students;
+export default StudentsList;
